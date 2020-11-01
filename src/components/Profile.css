@@ -1,0 +1,47 @@
+.profile{
+    flex-basis: 45%;
+    margin-left: 25px;
+    background-color: #f1f1f1;
+    padding: 50px;
+    box-sizing: border-box;
+    position: fixed;
+    height: 90vh;
+    right: 2%;
+    width: 40%;
+}
+
+.disply__name{
+    background: #f50057;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 400;
+    margin: auto;
+    font-weight: 100;
+    margin: auto;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+.profile__name{
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 20px;
+    justify-content: center;
+}
+.profile > p{
+    margin-bottom: 30px;
+    display: flex;
+}
+.profile > p > span:first-of-type{
+    flex: 0.5;
+}
+.profile > p > span:last-of-type{
+    flex: 1;
+    font-weight: 500;
+}
