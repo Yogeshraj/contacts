@@ -44,7 +44,7 @@ function Table() {
                 }}
               /> */}
             </th>
-            <th>Full Name</th>
+            <th>Name</th>
             <th>Email</th>
           </tr>
         </thead>

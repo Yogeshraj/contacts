@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 21,
+  "agentName": "YOGESH",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelines.actions.githubusercontent.com/MJzWJGtsPYEJhuyi3sRBN96XHT1Y98Jt56tTVRELqly7MHfBsr",
+  "gitHubUrl": "https://github.com/Yogeshraj/contacts",
+  "workFolder": "testing"
+}
