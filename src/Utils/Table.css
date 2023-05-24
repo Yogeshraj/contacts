@@ -1,6 +1,5 @@
 tr, th{
     text-align: left;
-    /* border-bottom: 1px solid #ccc; */
 }
 
 tr:last-of-type{
@@ -9,6 +8,8 @@ tr:last-of-type{
 
 td, th{
     padding: 5px 20px;
+    z-index: 9;
+    position: relative;
 }
 
 table{
@@ -17,16 +18,28 @@ table{
     width: 100%;
 }
 
-tr.active{
-    background-color: lightpink;
-}
-
-tbody tr:hover{
-    background-color: lightpink;
+tr {
+    position: relative;
     cursor: pointer;
 }
+
+tr::after{
+    background-color: lightpink;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 52px;
+    width: 0;
+    transition: width .25s ease-in-out;
+}
+
+tr.active::after, tr:hover::after {
+    width: 100%;
+}
+
 thead tr{
-    background-color: #f1f1f1;
+    height: 52px;
 }
 
 .table {

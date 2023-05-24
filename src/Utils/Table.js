@@ -1,49 +1,35 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
-import {StateContext} from '../StateProvider';
+import { StateContext } from "../StateProvider";
 import "./Table.css";
 
-
 function Table() {
-
-  const [stateVal, useStateVal] = useContext(StateContext);
-
+  const { useStateVal } = useContext(StateContext);
   const [tData, setData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState();
+  
   useEffect(() => {
     async function fetchMovies() {
-      const response = await fetch("https://gorest.co.in/public-api/users")
+      await fetch("https://gorest.co.in/public-api/users")
         .then((response) => response.json())
-        .then((data) =>
-          setData(data.data.map((d) => ({ select: false, ...d })))
-        );
+        .then((result) => {
+          setData(result.data);
+        });
     }
     fetchMovies();
   }, []);
 
-
-  const HandleClick = (head) =>{
+  const HandleClick = (head, index) => {
+    setSelectedIndex(index);
     useStateVal(head);
-  }
-  // console.log(stateVal);
+  };
 
   return (
-    <div className="table">
+    <div className='table'>
       <table>
         <thead>
           <tr>
-            <th>
-              {/* <Checkbox
-                onChange={(event) => {
-                  let checked = event.target.checked;
-                  setData(
-                    tData.map((d) => {
-                      d.select = checked;
-                      return d;
-                    })
-                  );
-                }}
-              /> */}
-            </th>
+            <th></th>
             <th>Name</th>
             <th>Email</th>
           </tr>
@@ -52,61 +38,12 @@ function Table() {
           {tData.map((head, index) => (
             <tr
               key={index}
-              className={head.select == true ? "active" : ""}
-              // onClick={() => {
-              //   if (head.select == false) {
-              //     setData(
-              //       tData.map((d) => {
-              //         if (head.id === d.id) {
-              //           head.select = true;
-              //         }
-              //         return d;
-              //       })
-              //     );
-              //   } else {
-              //     setData(
-              //       tData.map((d) => {
-              //         if (head.id === d.id) {
-              //           head.select = false;
-              //         }
-              //         return d;
-              //       })
-              //     );
-              //   }
-              // }}
+              className={selectedIndex === index ? "active" : ""}
               onClick={() => {
-                // HandleClick(head.id);
-                HandleClick(head);
-                setData(
-                  tData.map((d) => {
-                    if (!head.select && head.id === d.id) {
-                      head.select = true;
-                    } else {
-                      if (head.id === d.id) {
-                        head.select = false;
-                      }
-                    }
-                    return d;
-                  })
-                );
-              }}
-            >
+                HandleClick(head, index);
+              }}>
               <td>
-                <Checkbox
-                  onChange={(event) => {
-                    let checked = event.target.checked;
-                    setData(
-                      tData.map((d) => {
-                        if (head.id === d.id) {
-                          head.select = checked;
-                          // console.log(head.select);
-                        }
-                        return d;
-                      })
-                    );
-                  }}
-                  checked={head.select}
-                />
+                <Checkbox checked={selectedIndex === index} />
               </td>
               <td>{head.name}</td>
               <td>{head.email}</td>
