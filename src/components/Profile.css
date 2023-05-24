@@ -1,13 +1,8 @@
 .profile{
     flex-basis: 45%;
-    margin-left: 25px;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     padding: 50px;
     box-sizing: border-box;
-    position: fixed;
-    height: 90vh;
-    right: 2%;
-    width: 40%;
 }
 
 .disply__name{

@@ -1,9 +1,10 @@
 .app{
     display: flex;
+    height: 100vh;
 }
 .home{
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin: 25px
+    background: #fafafc;
 }
